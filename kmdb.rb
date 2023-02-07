@@ -31,6 +31,11 @@
 #rails generate model Actor
 #rails generate model Role
 
+Studio.destroy_all
+Movie.destroy_all
+Actor.destroy_all
+Role.destroy_all
+
 # - Insert the "Batman" sample data using ruby code. Do not use hard-coded ids.
 #Studio
 puts "there are #{Studio.all.count} studios"
@@ -159,8 +164,8 @@ puts "there are #{Actor.all.count} actors"
 puts "there are #{Actor.all.count} actors"
 actor = Actor.new
 actor["name"] = "Anne Hathaway"
-anne_hathaway = Actor.find_by({"name" => "Anne Hathaway"})
 actor.save
+anne_hathaway = Actor.find_by({"name" => "Anne Hathaway"})
 puts "there are #{Actor.all.count} actors"
 
 #ROLES
@@ -288,6 +293,15 @@ role = Role.new
 role["movie_id"] = bm3["id"]
 role["actor_id"] = jgl["id"]
 role["character_name"] = "John Blake"
+role.save
+puts "there are #{Role.all.count} roles"
+
+##
+puts "there are #{Role.all.count} roles"
+role = Role.new
+role["movie_id"] = bm3["id"]
+role["actor_id"] = anne_hathaway["id"]
+role["character_name"] = "Selina Kyle"
 role.save
 puts "there are #{Role.all.count} roles"
 # - Insert the "Batman" sample data using ruby code. Do not use hard-coded ids.
